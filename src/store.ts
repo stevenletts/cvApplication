@@ -1,9 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import infoReducer from "./reducers/infoReducer";
+import educationReducer from "./reducers/educationReducer";
+import workExerienceReducer from "./reducers/workExerienceReducer";
 
 const store = configureStore({
   reducer: {
     info: infoReducer,
+    education: educationReducer,
+    workExperience: workExerienceReducer,
   },
 });
 

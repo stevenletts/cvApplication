@@ -1,12 +1,13 @@
 import { useDispatch } from "react-redux";
 import { UseField } from "../hooks";
 import { setAll } from "../reducers/infoReducer";
+import NextAndPrevButton from "./NextAndPrevButton";
 
 const InfoForm = (): JSX.Element => {
   const dispatch = useDispatch();
 
   const name = UseField("text");
-  const email = UseField("text");
+  const email = UseField("email");
   const phoneNumber = UseField("text");
 
   const submitInfo = (event: React.SyntheticEvent) => {
@@ -18,27 +19,35 @@ const InfoForm = (): JSX.Element => {
         phoneNumber: phoneNumber.value,
       })
     );
+    [name, email, phoneNumber].forEach((item) => item.onReset());
   };
 
   return (
-    <div>
-      <form onSubmit={submitInfo}>
-        <div>
-          <label>Name: </label>
-          <input {...name} />
-        </div>
-        <div>
-          <label>Email: </label>
-          <input {...email} />
-        </div>
-        <div>
-          <label>Phone Number: </label>
-          <input {...phoneNumber} />
-        </div>
-        <button type="submit">Submit</button>
-      </form>
+    <div className="outside">
+      <NextAndPrevButton linkLocation="Home" />
+      <div className="card">
+        <form className="form" onSubmit={submitInfo}>
+          <div>
+            <label>Name: </label>
+            <input required {...name} />
+          </div>
+          <div>
+            <label>Email: </label>
+            <input required {...email} />
+          </div>
+          <div>
+            <label>Phone Number: </label>
+            <input required {...phoneNumber} />
+          </div>
+          <div className="container">
+            <button className="form-submit-button" type="submit">
+              Add
+            </button>
+          </div>
+        </form>
+      </div>
+      <NextAndPrevButton linkLocation="Education" />
     </div>
   );
 };
-
 export default InfoForm;
