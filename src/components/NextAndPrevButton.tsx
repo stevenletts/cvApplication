@@ -6,7 +6,14 @@ const NextAndPrevButton = ({
   linkLocation: string;
 }): JSX.Element => {
   const navigate = useNavigate();
-  const handleClick = () => navigate(`/${linkLocation}`);
+
+  const handleClick = () => {
+    if (linkLocation === "CV") {
+      navigate("/");
+      return;
+    }
+    navigate(`/${linkLocation}`);
+  };
 
   return (
     <div>

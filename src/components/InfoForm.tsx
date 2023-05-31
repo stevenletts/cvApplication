@@ -24,7 +24,7 @@ const InfoForm = (): JSX.Element => {
 
   return (
     <div className="outside">
-      <NextAndPrevButton linkLocation="Home" />
+      <NextAndPrevButton linkLocation="CV" />
       <div className="card">
         <form className="form" onSubmit={submitInfo}>
           <div>
